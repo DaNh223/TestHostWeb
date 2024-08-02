@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% if title %}
+            {{ title }} - Dự Đoán Giá Xe
+        {% else %}
+            Chào Mừng Đến Dự Đoán Giá Xe
+        {% endif %}
+    </title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['gauge']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Nhãn', 'Giá trị'],
+                ['Giá Xe', {{ price }}]
+            ]);
+
+            var options = {
+                width: 800,
+                height: 400,
+                redFrom: Math.max(0, {{ price }} - 1120),
+                redTo: {{ price }} + 1120,
+                minorTicks: 10,
+                max: 2 * {{ price }},
+                min: 0,
+                greenFrom: 0,
+                greenTo: {{ price }},
+                yellowFrom: {{ price }},
+                yellowTo: 2 * {{ price }}
+            };
+
+            var chart = new google.visualization.Gauge(document.getElementById('car_price'));
+            chart.draw(data, options);
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            padding: 20px;
+            background-color: #e2e2e2;
+            margin: 0;
+            border-bottom: 2px solid #ddd;
+        }
+
+        #car_price {
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Dựa Trên Mô Hình Của Chúng Tôi, Giá Xe Của Bạn Là US$ {{ price }}</h1>
+    <div id="car_price" style="width: 800px; height: 400px;"></div>
+</body>
+</html>

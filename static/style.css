@@ -1,0 +1,83 @@
+/* Cài đặt font chữ và màu nền chung */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-image: url("car1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cài đặt cho các tiêu đề */
+h1, h2 {
+    color: #fff;
+    text-align: center;
+    background-color: rgba(71, 99, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 0 20px;
+}
+
+/* Cài đặt cho các đoạn văn */
+p {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+    color: #fff;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+/* Cài đặt cho các liên kết */
+a {
+    color: #1e90ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Cài đặt cho form */
+form {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+    color: #fff;
+}
+
+/* Cài đặt cho các ô nhập dữ liệu */
+input[type="text"], input[type="number"], select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Cài đặt cho nút dự đoán */
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}

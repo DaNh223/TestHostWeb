@@ -1,0 +1,72 @@
+<html>
+ <head>
+        {% if title %}
+        <title>{{ title }} - Dự Đoán Giá Xe</title>
+        {% else %}
+        <title>Chào Mừng Đến Dự Đoán Giá Xe</title>
+        {% endif %}
+        <link rel="stylesheet" type="text/css" href="/static/style.css">
+    </head>
+ <body>
+    <h1>Dự Đoán Giá Xe Dựa Trên Hồi Quy Tuyến Tính</h1>
+    <p style="text-align:left;font-size:12; font-style:italic;font-family:Times">Tải Dữ Liệu Gốc Từ <a href="https://www.kaggle.com/gunishj/carpricepred/downloads/carpricepred.zip/1">Đây</a></p>
+    <h2>Nhập Thông Tin Xe Của Bạn</h2>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            Tuổi xe:</br>
+            {{ form.car_age(size=32) }}</br>
+            {% for error in form.car_age.errors %}
+            <span style="color:red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            Số cửa:</br>
+            {{ form.car_doors(size=32) }}</br>
+            {% for error in form.car_doors.errors %}
+            <span style="color:red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+         <p>
+            Dung tích xe:</br>
+            {{ form.car_cc(size=32) }}</br>
+            {% for error in form.car_cc.errors %}
+            <span style="color:red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            Công suất:</br>
+            {{ form.car_horsepower(size=32) }}</br>
+            {% for error in form.car_horsepower.errors %}
+            <span style="color:red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+         <p>
+            Số km đã đi:</br>
+            {{ form.car_odometer(size=32) }}</br>
+            {% for error in form.car_odometer.errors %}
+            <span style="color:red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            Cân nặng:</br>
+            {{ form.car_weight(size=32) }}</br>
+            {% for error in form.car_weight.errors %}
+            <span style="color:red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+         <p>
+            Loại nhiên liệu: {{ form.car_fuel }}
+        </p>
+         <p>
+            Hộp số: {{ form.car_transmission }}
+        </p>
+        <p>
+            Màu sắc: {{ form.car_color }}
+        </p>
+        <p>
+            {{ form.predict() }}
+        </p>
+    </form>
+</body>
+</html>
